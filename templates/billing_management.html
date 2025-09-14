@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block header %} Billing Management {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{url_for('static', filename = 'doctor_all_file.css')}}">
+{% endblock %}
+
+{% block content %}
+
+<style>
+    footer{
+        position: fixed;
+    }
+</style>
+
+<div class="container">
+    <h2>Billing Management</h2>
+    <form action="/billing/action" method="GET">
+        <label for="action">Choose an Action</label>
+        <select id="action" name="action" required>
+            <option value="generate">Generate Invoice</option>
+            <option value="edit">Edit Invoice</option>
+            <option value="delete">Delete Invoice</option>
+            <option value="apply_discount">Apply Discount</option>
+            <option value="search_by_id">Search Invoice by ID</option>
+            <option value="search_by_patient">Search Invoices by Patient ID</option>
+            <option value="view_all">View All Invoices</option>
+        </select>
+        <button type="submit">Proceed</button>
+    </form>
+</div>
+{% endblock %}

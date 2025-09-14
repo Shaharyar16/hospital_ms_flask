@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="box">
+        <a href="/patient" class="box-link">
+            <h3>Patient Management</h3>
+            <p>Manage patient details, medical history, and treatment records.</p>
+        </a>
+        <button onclick="window.location.href='/patient'">Manage Patients</button>
+    </div>
+    <div class="box">
+        <a href="/doctor" class="box-link">
+            <h3>Doctor Management</h3>
+            <p>Manage doctor profiles by specialization, status, and more.</p>
+        </a>
+        <button onclick="window.location.href='/doctor'">Manage Doctors</button>
+    </div>
+    <div class="box">
+        <a href="/appointment" class="box-link">
+            <h3>Appointment Scheduling</h3>
+            <p>Book, reschedule, cancel, or search for appointments easily.</p>
+        </a>
+        <button onclick="window.location.href='/appointment'">Schedule Appointments</button>
+    </div>
+    <div class="box">
+        <a href="/billing" class="box-link">
+            <h3>Billing System</h3>
+            <p>Generate invoices and maintain billing history.</p>
+        </a>
+        <button onclick="window.location.href='/billing'">Manage Billing</button>
+    </div>
+    <div class="box">
+        <a href="/report" class="box-link">
+            <h3>Reporting</h3>
+            <p>Generate reports on hospital metrics and doctor performance.</p>
+        </a>
+        <button onclick="window.location.href='/report'">View Reports</button>
+    </div>
+</div>
+{% endblock %}

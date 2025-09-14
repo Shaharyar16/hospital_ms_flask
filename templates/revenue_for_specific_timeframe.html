@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block header %} Total Revenue Generated Report {% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='doctor_all_file.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h2>Total Revenue Generated</h2>
+    <form action="/report/revenue_for_specific_timeframe" method="POST">
+            <label for="start_date">Start Date:</label>
+            <input type="datetime-local" id="start_date" name="start_date" required>
+            <label for="end_date">End Date:</label>
+            <input type="datetime-local" id="end_date" name="end_date" required>
+        <button type="submit">Generate Report</button>
+    </form>
+
+    <div class="report-result">
+        <h2>Results:</h2>
+        <p style="text-align: center; font-weight: 600;" >Total Revenue from {{ start_date }}  to  {{ end_date }} : {{ revenue_generated }} </p>
+    </div>
+
+</div>
+{% endblock %}

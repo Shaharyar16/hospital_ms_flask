@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'patient_all_file.css')}}">
+   
+</head>
+<body>
+    <header>
+        <h1>Login</h1>
+    </header>
+    <style>
+    header h1{
+        font-size: 1.7rem;
+    }
+    @media(max-width: 768px){
+        header h1{
+            margin-left: 40%;
+        }
+    }
+    </style>
+    
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul class="flashes">
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+<div class="container">
+    <h2>Login</h2>
+    <form action="/" method="POST">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+        <button type="submit">Login</button>
+    </form>
+</div>
+<footer>
+    <p>&copy; 2024 Hospital Management System</p>
+</footer>
+</body>
+</html>
+

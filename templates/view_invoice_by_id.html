@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block header %} Search Invoice by ID {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{url_for('static', filename = 'doctor_all_file.css')}}">
+{% endblock %}
+
+{% block content %}
+
+<style>
+    footer{
+        position: fixed;
+    }
+</style>
+
+<div class="container">
+    <h2>Search Invoice by ID</h2>
+
+    <form action="/billing/search_by_id" method="POST">
+        <label for="invoice_id">Invoice ID</label>
+        <input type="text" id="invoice_id" name="invoice_id" placeholder="Enter Invoice ID" required>
+
+        <button type="submit">Search</button>
+    </form>
+    </div>
+    {% if invoice %}
+
+    <style>
+        footer{
+            position: relative;
+        }
+    </style>
+        <h2>Invoice Details</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Invoice ID</th>
+                    <th>Patient ID</th>
+                    <th>Doctor Fees</th>
+                    <th>Medicine Fees</th>
+                    <th>Room Fees</th>
+                    <th>Other Expenses</th>
+                    <th>Total Amount</th>
+                    <th>Discount</th>
+                    <th>Final Amount</th>
+                    <th>Invoice Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ invoice[0] }}</td>
+                    <td>{{ invoice[1] }}</td>
+                    <td>{{ invoice[2] }}</td>
+                    <td>{{ invoice[3] }}</td>
+                    <td>{{ invoice[4] }}</td>
+                    <td>{{ invoice[5] }}</td>
+                    <td>{{ invoice[6] }}</td>
+                    <td>{{ invoice[7] }}</td>
+                    <td>{{ invoice[8] }}</td>
+                    <td>{{ invoice[9] }}</td>
+                </tr>
+            </tbody>
+        </table>
+    {% endif %}
+
+{% endblock %}

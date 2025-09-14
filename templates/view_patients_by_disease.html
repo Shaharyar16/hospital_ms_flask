@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block header %} 
+    Search Patients By Disease 
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='patient_all_file.css') }}">
+{% endblock %}
+
+{% block content %}
+    <style>
+        footer {
+            position: fixed;
+        }
+        @media(max-width: 768px){
+        header h1{
+            margin-left: 5%;
+            font-size: 1.5rem;
+        }}
+    </style>
+
+    <div class="container">
+        <h2>Search Patients by Disease</h2>
+        
+        <form action="/patients/search_by_disease" method="POST">
+            <label for="disease">Disease</label>
+            <input type="text" id="disease" name="disease" placeholder="Enter disease" required>
+
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    {% if patients %}
+        <style>
+            footer {
+                position: relative;
+            }
+        </style>
+        <h2>Patients Found</h2>
+        <table border="1">
+            <tr>
+                <th>Patient ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Disease</th>
+                <th>Medical History</th>
+            </tr>
+            {% for patient in patients %}
+                <tr>
+                    <td>{{ patient[0] }}</td>
+                    <td>{{ patient[1] }}</td>
+                    <td>{{ patient[2] }}</td>
+                    <td>{{ patient[3] }}</td>
+                    <td>{{ patient[4] }}</td>
+                    <td>{{ patient[5] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+{% endblock %}

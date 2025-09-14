@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block header %} Apply Discount to Invoice {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{url_for('static', filename = 'doctor_all_file.css')}}">
+{% endblock %}
+
+{% block content %}
+<style>
+    footer{
+        position: fixed;
+    }
+</style>
+
+
+<div class="container">
+    <h2>Apply Discount to Invoice</h2>
+    <form action="/billing/apply_discount" method="POST">
+        <label for="invoice_id">Invoice ID</label>
+        <input type="text" id="invoice_id" name="invoice_id" placeholder="Enter Invoice ID" required>
+
+        <label for="discount">Discount Percentage</label>
+        <input type="number" id="discount" name="discount" placeholder="Enter Discount Percentage" required>
+
+        <button type="submit">Apply Discount</button>
+    </form>
+</div>
+{% endblock %}

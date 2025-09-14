@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block header %} Reschedule Appointment {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{url_for('static', filename = 'doctor_all_file.css')}}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h2>Reschedule Appointment</h2>
+    <form action="/appointment/reschedule" method="POST">
+        <label for="appointment_id">Appointment ID</label>
+        <input type="text" id="appointment_id" name="appointment_id" placeholder="Enter Appointment ID" required>
+
+        <label for="doctor_id">Doctor ID</label>
+        <input type="text" id="doctor_id" name="doctor_id" placeholder="Enter Doctor ID" >
+
+        <label for="room_no">Room Number</label>
+        <input type="text" id="room_no" name="room_no" placeholder="Enter Room Number">
+
+        <label for="new_date_and_time">New Date and Time</label>
+        <input type="datetime-local" id="new_date_and_time" name="new_date_and_time">
+
+        <button type="submit">Reschedule Appointment</button>
+    </form>
+</div>
+
+{% endblock %}

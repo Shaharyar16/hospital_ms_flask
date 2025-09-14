@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block header %} Cancel Appointment {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{url_for('static', filename = 'doctor_all_file.css')}}">
+{% endblock %}
+
+{% block content %}
+<style>
+    footer{
+        position: fixed;
+    }
+</style>
+
+<div class="container">
+    <h2>Cancel Appointment</h2>
+    <form action="/appointment/cancel" method="POST">
+        <label for="appointment_id">Appointment ID</label>
+        <input type="text" id="appointment_id" name="appointment_id" placeholder="Enter Appointment ID" required>
+
+        <button type="submit">Cancel Appointment</button>
+    </form>
+</div>
+
+{% endblock %}

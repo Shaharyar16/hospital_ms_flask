@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block header %}Generate Invoice{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='doctor_all_file.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h2>Generate Invoice</h2>
+    <form action="/billing/generate" method="POST">
+        <label for="patient_id">Patient ID</label>
+        <input type="text" id="patient_id" name="patient_id" placeholder="Enter Patient ID" required>
+
+        <label for="doc_fee">Doctor's Fee</label>
+        <input type="number" id="doc_fee" name="doc_fee" placeholder="Enter Doctor's Fee" required>
+
+        <label for="medicine">Medicine Fees</label>
+        <input type="number" id="medicine" name="medicine" placeholder="Enter Medicine Fees" required>
+
+        <label for="room_fee">Room Fees</label>
+        <input type="number" id="room_fee" name="room_fee" placeholder="Enter Room Fees" required>
+
+        <label for="other_expenses">Other Expenses</label>
+        <input type="number" id="other_expenses" name="other_expenses" placeholder="Enter Other Expenses" required>
+
+        <label for="discount">Discount Percentage</label>
+        <input type="number" id="discount" name="discount" placeholder="Enter Discount" required>
+
+        <button type="submit">Generate Invoice</button>
+    </form>
+</div>
+{% endblock %}

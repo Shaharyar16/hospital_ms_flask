@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block header %} Doctor Performance Report {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='doctor_all_file.css') }}">
+{% endblock %}
+
+{% block content %}
+<style>
+    footer{
+        position: fixed;
+    }
+</style>
+    {% if doctor_perform %}
+        <div class="container">
+            <table border="1">
+                <tr>
+                    <th>Doctor ID</th>
+                    <th>Patients Treated</th>
+                </tr>
+                {% for doctor in doctor_perform %}
+                    <tr>
+                        <td>{{ doctor[0] }}</td> 
+                        <td>{{ doctor[1] }}</td> 
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    {% endif %}
+{% endblock %}

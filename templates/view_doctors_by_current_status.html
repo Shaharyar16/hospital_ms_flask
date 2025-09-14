@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block header %} View Doctors by Current Status {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{url_for('static', filename = 'doctor_all_file.css')}}">
+{% endblock %}
+
+{% block content %}
+
+<style>
+    footer {
+        position: fixed;
+    }
+</style>
+    
+
+<div class="container">
+    <h2>View Doctors by Current Status</h2>
+    <form action="/doctors/search_by_status" method="POST">
+        <label for="status">Current Status:</label>
+        <select id="status" name="status" required>
+            <option value="Free">Free</option>
+            <option value="Reserved">Reserved</option>
+        </select>
+        <button type="submit">Search</button>
+    </form>
+</div>
+{% if doctors %}
+    <style>
+        footer {
+            position: relative;
+        }
+    </style>
+    <h2>Doctors Found</h2>
+    <table border="1">
+        <tr>
+            <th>Doctor ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Specialization</th>
+            <th>Current Status</th>
+        </tr>
+        {% for doctor in doctors %}
+                <tr>
+                    <td>{{ doctor[0] }}</td>
+                    <td>{{ doctor[1] }}</td>
+                    <td>{{ doctor[2] }}</td>
+                    <td>{{ doctor[3] }}</td>
+                    <td>{{ doctor[4] }}</td>
+                    <td>{{ doctor[5] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+{% endblock %}

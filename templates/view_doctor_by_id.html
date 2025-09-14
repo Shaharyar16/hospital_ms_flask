@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block header %} View Doctor by ID {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{url_for('static', filename = 'doctor_all_file.css')}}">
+{% endblock %}
+
+
+{% block content %}
+
+<style>
+    footer{
+        position: fixed;
+    }
+</style>
+
+<div class="container">
+    <h2>View Doctor by ID</h2>
+    <form action="/doctors/search_by_id" method="POST">
+        <label for="doctorID">Doctor ID:</label>
+        <input type="text" id="doctorID" name="doctorID" required>
+        <button type="submit">Search</button>
+    </form>
+</div>
+{% if doctor %}
+<style>
+    footer{
+        position: relative;
+    }
+</style>
+
+<h2>Doctor Details</h2>
+<table border="1">
+    <tr>
+        <th>Doctor ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Specialization</th>
+        <th>Current Status</th>
+    </tr>
+    <tr>
+        <td>{{ doctor[0] }}</td>
+        <td>{{ doctor[1] }}</td>
+        <td>{{ doctor[2] }}</td>
+        <td>{{ doctor[3] }}</td>
+        <td>{{ doctor[4] }}</td>
+        <td>{{ doctor[5] }}</td> 
+    </tr>
+</table>
+{% endif %}
+{% endblock %}

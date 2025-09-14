@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block header %} Book Appointment {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{url_for('static', filename = 'doctor_all_file.css')}}">
+{% endblock %}
+
+{% block content %}
+
+<style>
+    footer{
+        position: relative;
+    }
+</style>
+
+<div class="container">
+    <h2>Book Appointment</h2>
+    <form action="/appointment/book" method="POST">
+        <label for="patient_id">Patient ID</label>
+        <input type="text" id="patient_id" name="patient_id" placeholder="Enter Patient ID" required>
+
+        <label for="doctor_id">Doctor ID</label>
+        <input type="text" id="doctor_id" name="doctor_id" placeholder="Enter Doctor ID" required>
+
+        <label for="room_no">Room Number</label>
+        <input type="text" id="room_no" name="room_no" placeholder="Enter Room Number" required>
+
+        <label for="date_and_time">Date and Time</label>
+        <input type="datetime-local" id="date_and_time" name="date_and_time" required>
+
+        <button type="submit">Book Appointment</button>
+    </form>
+</div>
+
+{% endblock %}

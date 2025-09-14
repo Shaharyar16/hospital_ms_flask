@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block header %} Search Appointments by Patient ID {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{url_for('static', filename = 'doctor_all_file.css')}}">
+{% endblock %}
+
+{% block content %}
+
+<style>
+    footer{
+        position: fixed;
+    }
+</style>
+
+<div class="container">
+    <h2>Search Appointments by Patient ID</h2>
+    
+    <form action="/appointment/search_by_patient" method="POST">
+        <label for="patient_id">Patient ID</label>
+        <input type="text" id="patient_id" name="patient_id" placeholder="Enter Patient ID" required>
+
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+{% if appointments %}
+
+<style>
+    footer{
+        position: relative;
+    }
+</style>
+
+
+ <h2>Appointments for Patient</h2>
+    <table border="1">
+        <tr>
+            <th>Appointment ID</th>
+            <th>Patient ID</th>
+            <th>Doctor ID</th>
+            <th>Room Number</th>
+            <th>Date and Time</th>
+        </tr>
+        {% for appointment in appointments %}
+        <tr>
+            <td>{{ appointment[0] }}</td>
+            <td>{{ appointment[1] }}</td>
+            <td>{{ appointment[2] }}</td>
+            <td>{{ appointment[3] }}</td>
+            <td>{{ appointment[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endif %}
+
+{% endblock %}

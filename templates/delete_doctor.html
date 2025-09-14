@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block header %} Delete Doctor {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{url_for('static', filename = 'doctor_all_file.css')}}">
+{% endblock %}
+
+{% block content %}
+
+
+<style>
+    footer{
+        position: fixed;
+    }
+</style>
+
+<div class="container">
+    <h2>Delete a Doctor</h2>
+    <form action="/doctors/delete" method="POST">
+        <label for="doctorID">Doctor ID:</label>
+        <input type="text" id="doctorID" name="doctorID" required>
+        <button type="submit">Delete Doctor</button>
+    </form>
+</div>
+{% endblock %}

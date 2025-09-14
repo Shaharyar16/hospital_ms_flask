@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block header %} Appointment Management {% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{{url_for('static', filename='doctor_all_file.css')}}">
+{% endblock %}
+
+
+{% block content %}
+<style>
+    footer{
+        position: fixed;
+    }
+</style>
+<div class="container">
+    <h2>Select an Action</h2>
+    <form action="/appointment/action" method="GET">
+        <label for="action">Choose an option:</label>
+        <select id="action" name="action">
+            <option value="book">Book Appointment</option>
+            <option value="reschedule">Reschedule Appointment</option>
+            <option value="cancel">Cancel Appointment</option>
+            <option value="view_by_id">Search Appointment by ID</option>
+            <option value="view_by_patient">Search Appointments by Patient ID</option>
+            <option value="view_by_doctor">Search Appointments by Doctor ID</option>
+            <option value="view_by_date">Search Appointments by Date</option>
+            <option value="view_all">View All Appointments</option>
+        </select>
+        <button type="submit">Proceed</button>
+    </form>
+</div>
+{% endblock %}

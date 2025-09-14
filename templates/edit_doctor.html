@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block header %} Edit Doctor {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{url_for('static', filename = 'doctor_all_file.css')}}">
+{% endblock %}
+{% block content %}
+
+
+<div class="container">
+    <h2>Edit Doctor Details</h2>
+    <form action="/doctors/edit" method="POST">
+        <label for="doctorID">Doctor ID:</label>
+        <input type="text" id="doctorID" name="doctorID" required>
+        
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age">
+        
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender">
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+        </select>
+        
+        <label for="specialization">Specialization:</label>
+        <input type="text" id="specialization" name="specialization">
+        
+        <label for="status">Current Status:</label>
+        <select id="status" name="status">
+            <option value="Free">Free</option>
+            <option value="Reserved">Reserved</option>
+        </select>
+        
+        <button type="submit">Edit Doctor</button>
+    </form>
+</div>
+{% endblock %}

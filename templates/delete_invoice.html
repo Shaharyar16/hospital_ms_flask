@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block header %} Delete Invoice {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{url_for('static', filename = 'doctor_all_file.css')}}">
+{% endblock %}
+{% block content %}
+    <style>
+        footer{
+            position: fixed;
+        }
+    </style>
+
+<div class="container">
+    <h2>Delete Invoice</h2>
+    <form action="/billing/delete" method="POST">
+        <label for="invoice_id">Invoice ID</label>
+        <input type="text" id="invoice_id" name="invoice_id" placeholder="Enter Invoice ID" required>
+
+        <button type="submit">Delete Invoice</button>
+    </form>
+</div>
+{% endblock %}

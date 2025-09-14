@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block header %} Total Patients Treated Report {% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='doctor_all_file.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h2>Total Patients Treated</h2>
+    <form action="/report/total_patients_treated_for_specific_timeframe" method="POST">
+            <label for="start_date">Start Date:</label>
+            <input type="datetime-local" id="start_date" name="start_date" required>
+            <label for="end_date">End Date:</label>
+            <input type="datetime-local" id="end_date" name="end_date" required>
+        <button type="submit">Generate Report</button>
+    </form>
+
+    {% if patients_treated is not none %}
+    <div class="report-result">
+        <h2>Results:</h2>
+        <p style="text-align: center; font-weight: 600;" >Total Patients Treated from {{ start_date }}  to  {{ end_date }}: {{ patients_treated }} </p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

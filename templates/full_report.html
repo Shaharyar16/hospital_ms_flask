@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block header %} Full Hospital Report {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='doctor_all_file.css') }}">
+{% endblock %}
+
+{% block content %}
+<style>
+    footer{
+        position: relative;
+    }
+</style>
+    <div class="container">
+    {% if total_patients %}
+    <table border="1">
+        <tr>
+            <th>Total Patients Treated</th>
+        </tr>
+        <tr>
+            <td>{{ total_patients }}</td> 
+        </tr>
+    {% endif %}
+
+    {% if revenue %}
+    <table border="1">
+        <tr>
+            <th>Total Revenue</th>
+        </tr>
+        <tr>
+            <td>{{ revenue }}</td> 
+        </tr>
+    {% endif %}
+
+    {% if doctor_perform %}
+        
+            <table border="1">
+                <tr>
+                    <th>Doctor ID</th>
+                    <th>Patients Treated</th>
+                </tr>
+                {% for doctor in doctor_perform %}
+                    <tr>
+                        <td>{{ doctor[0] }}</td> 
+                        <td>{{ doctor[1] }}</td> 
+                    </tr>
+                {% endfor %}
+            </table>
+        
+    {% endif %}
+        </div>
+{% endblock %}

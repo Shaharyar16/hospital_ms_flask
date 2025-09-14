@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block header %} Search Patient By ID {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{url_for('static', filename = 'patient_all_file.css')}}">
+{% endblock %}
+{% block content %}
+
+<style>
+    footer{
+        position: fixed;
+    }
+    @media(max-width: 768px){
+        header h1{
+            margin-left: 10%;
+        }
+    }
+</style>
+
+<div class="container">
+    <h2>Search Patient By ID</h2>
+        <form action="/patients/search_by_id" method="POST">
+            <label for="patientID">Patient ID</label>
+            <input type="text" id="patientID" name="patientID" placeholder="Enter patient ID" required>
+
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    {% if patient %}
+    <h2>Patient Details</h2>
+    <table border="1">
+        <tr>
+            <th>Patient ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Disease</th>
+            <th>Medical History</th>
+        </tr>
+        <tr>
+            <td>{{ patient[0] }}</td>
+            <td>{{ patient[1] }}</td>
+            <td>{{ patient[2] }}</td>
+            <td>{{ patient[3] }}</td>
+            <td>{{ patient[4] }}</td>
+            <td>{{ patient[5] }}</td> 
+        </tr>
+    </table>
+{% endif %}
+    {% endblock %}

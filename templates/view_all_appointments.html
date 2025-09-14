@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block header %} View All Appointments {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{url_for('static', filename = 'doctor_all_file.css')}}">
+{% endblock %}
+
+{% block content %}
+
+<style>
+    footer{
+        position: fixed;
+    }
+</style>
+
+    <h2>All Appointments</h2>
+
+    {% if appointments %}
+    <table border="1">
+        <tr>
+            <th>Appointment ID</th>
+            <th>Patient ID</th>
+            <th>Doctor ID</th>
+            <th>Room Number</th>
+            <th>Date and Time</th>
+        </tr>
+        {% for appointment in appointments %}
+        <tr>
+            <td>{{ appointment[0] }}</td>
+            <td>{{ appointment[1] }}</td>
+            <td>{{ appointment[2] }}</td>
+            <td>{{ appointment[3] }}</td>
+            <td>{{ appointment[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+{% endblock %}

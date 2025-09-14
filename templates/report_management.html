@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block header %} Report {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{url_for('static', filename = 'doctor_all_file.css')}}">
+{% endblock %}
+
+{% block content %}
+
+<style>
+    footer{
+        position: fixed;
+    }
+
+    header h1{
+       margin-left: 4.5em;
+       font-size: 1.7rem;
+   }
+</style>
+
+<div class="container">
+    <h2>Select an Action</h2>
+    <form action="/report/action" method="GET">
+        <label for="action">Choose an option:</label>
+        <select id="action" name="action">
+            <option value="total_patients_treated_for_specific_timeframe">Total Patients Treated For Specific Timeframe</option>
+            <option value="revenue_for_specific_timeframe">Revenue for Specific Timeframe</option>
+            <option value="doctor_performance">Doctor Performance Report</option>
+            <option value="full_report">Full Report</option>
+        </select>
+        <button type="submit">Proceed</button>
+    </form>
+</div>
+{% endblock %}

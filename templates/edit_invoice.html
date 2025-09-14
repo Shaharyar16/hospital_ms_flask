@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block header %}Edit Invoice{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='doctor_all_file.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Edit Invoice</h2>
+    
+    <form action="/billing/edit" method="POST">
+        <label for="invoice_id">Invoice ID</label>
+        <input type="text" id="invoice_id" name="invoice_id" placeholder="Enter Invoice ID" required>
+
+        <label for="doc_fee">Doctor's Fee</label>
+        <input type="number" id="doc_fee" name="doc_fee" placeholder="Enter Doctor's Fee" required>
+
+        <label for="medicine">Medicine Fees</label>
+        <input type="number" id="medicine" name="medicine" placeholder="Enter Medicine Fees" required>
+
+        <label for="room_fee">Room Fees</label>
+        <input type="number" id="room_fee" name="room_fee" placeholder="Enter Room Fees" required>
+
+        <label for="other_expenses">Other Expenses</label>
+        <input type="number" id="other_expenses" name="other_expenses" placeholder="Enter Other Expenses" required>
+
+        <button type="submit">Edit Invoice</button>
+    </form>
+</div>
+{% endblock %}

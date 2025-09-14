@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block header %} Doctor Management {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{url_for('static', filename = 'patient_management.css')}}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Select an Action</h2>
+    <form action="/doctor/action" method="GET">
+        <label for="action">Choose an option:</label>
+        <select id="action" name="action">
+            <option value="add">Add Doctor</option>
+            <option value="edit">Edit Doctor</option>
+            <option value="delete">Delete Doctor</option>
+            <option value="view_by_id">View Doctor by ID</option>
+            <option value="view_by_name">View Doctors by Name</option>
+            <option value="view_by_specialization">View Doctors by Specialization</option>
+            <option value="view_by_current_status">View Doctors by Current Status</option>
+            <option value="view_all">View All Doctors</option>
+        </select>
+        <button type="submit">Proceed</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block header %} Add Doctor {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{url_for('static', filename = 'doctor_all_file.css')}}">
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="container">
+    <h2>Add a New Doctor</h2>
+    <form action="/doctors/add" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+        
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+        </select>
+        
+        <label for="specialization">Specialization:</label>
+        <input type="text" id="specialization" name="specialization" required>
+        
+        <label for="status">Current Status:</label>
+        <select id="status" name="status" required>
+            <option value="Free">Free</option>
+            <option value="Reserved">Reserved</option>
+        </select>
+        
+        <button type="submit">Add Doctor</button>
+    </form>
+</div>
+{% endblock %}
