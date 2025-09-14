@@ -5,11 +5,12 @@ from Appointment_Sceduling import book_appointment, reschedule_appointment, canc
 from Billing_System import generate_invoice, edit_invoice, delete_invoice, apply_discount, search_invoice_by_id, search_invoices_by_patientId, view_all_invoices, invoice_generated
 from Report import total_patients_treated_for_specific_timeframe, revenue_for_specific_timeframe, doctor_performance, full_report
 from Database import createDatabase, createTables
+import os
 createDatabase()
 createTables()
 
 app = Flask(__name__)
-app.secret_key = 'shaharyar12345'
+app.secret_key = os.getenv("SECRET_KEY", "devsecret")
 usernameinfo = "abcdefgh"
 passwordinfo = "12345678"
 
@@ -696,5 +697,8 @@ def revenue_for_specific_timeframe_from_db():
 
 
 
+
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.getenv("PORT", 5000))  # Render gives you a PORT automatically
+    app.run(host="0.0.0.0", port=port)
